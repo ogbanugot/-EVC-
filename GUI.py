@@ -8,6 +8,17 @@ import faiss
 from random import shuffle
 import json, datetime, requests
 from gtts import gTTS
+from infer_pack.models import (SynthesizerTrnMs256NSFsid,SynthesizerTrnMs256NSFsid_nono,SynthesizerTrnMs768NSFsid,SynthesizerTrnMs768NSFsid_nono)
+import soundfile as sf
+from fairseq import checkpoint_utils
+import gradio as gr
+import logging
+from vc_infer_pipeline import VC
+from config import Config
+from infer_uvr5 import _audio_pre_, _audio_pre_new
+from my_utils import load_audio
+from train.process_ckpt import show_info, change_info, merge, extract_small_model
+
 now_dir = os.getcwd()
 sys.path.append(now_dir)
 tmp = os.path.join(now_dir, "TEMP")
@@ -73,18 +84,6 @@ else:
     gpu_info = i18n("很遗憾您这没有能用的显卡来支持您训练")
     default_batch_size = 1
 gpus = "-".join([i[0] for i in gpu_infos])
-
-from infer_pack.models import (SynthesizerTrnMs256NSFsid,SynthesizerTrnMs256NSFsid_nono,SynthesizerTrnMs768NSFsid,SynthesizerTrnMs768NSFsid_nono)
-
-import soundfile as sf
-from fairseq import checkpoint_utils
-import gradio as gr
-import logging
-from vc_infer_pipeline import VC
-from config import Config
-from infer_uvr5 import _audio_pre_, _audio_pre_new
-from my_utils import load_audio
-from train.process_ckpt import show_info, change_info, merge, extract_small_model
 
 config = Config()
 # from trainset_preprocess_pipeline import PreProcess
