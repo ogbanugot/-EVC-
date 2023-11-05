@@ -1873,50 +1873,50 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
                         fast_audio = gr.Audio(label="As soon as you stop recording, inference will start.",type="filepath", sources="microphone", autoplay=False)
                         fast_result = gr.Audio(label="Result",type="filepath", autoplay=True)
                         
-            # with gr.Row():
-            #     vc_output1 = gr.Textbox(label="Output Information:")
-            #     f0_file = gr.File(label=i18n("F0曲线文件, 可选, 一行一个音高, 代替默认F0及升降调"), visible=False)
-            #     fast_audio.stop_recording(
-            #         fn=fast,
-            #         inputs=[
-            #             fast_audio,
-            #             spk_item,
-            #             vc_transform0,
-            #             f0method0,
-            #             file_index1,
-            #             index_rate1,
-            #             filter_radius0,
-            #             resample_sr0,
-            #             rms_mix_rate0,
-            #             protect0,
-            #             crepe_hop_length
-            #             ],
-            #         outputs=[
-            #             fast_result,
-            #             fast_audio, 
-            #             vc_output1
-            #             ]
-            #         )
-            #     but0.click(
-            #         vc_single,
-            #         [
-            #             spk_item,
-            #             input_audio0,
-            #             vc_transform0,
-            #             f0_file,
-            #             f0method0,
-            #             file_index1,
-            #             # file_index2,
-            #             # file_big_npy1,
-            #             index_rate1,
-            #             filter_radius0,
-            #             resample_sr0,
-            #             rms_mix_rate0,
-            #             protect0,
-            #             crepe_hop_length
-            #         ],
-            #         [vc_output1, vc_output2],
-            #     )
+            with gr.Row():
+                vc_output1 = gr.Textbox(label="Output Information:")
+                f0_file = gr.File(label=i18n("F0曲线文件, 可选, 一行一个音高, 代替默认F0及升降调"), visible=False)
+                fast_audio.stop_recording(
+                    fn=fast,
+                    inputs=[
+                        fast_audio,
+                        spk_item,
+                        vc_transform0,
+                        f0method0,
+                        file_index1,
+                        index_rate1,
+                        filter_radius0,
+                        resample_sr0,
+                        rms_mix_rate0,
+                        protect0,
+                        crepe_hop_length
+                        ],
+                    outputs=[
+                        fast_result,
+                        fast_audio, 
+                        vc_output1
+                        ]
+                    )
+                but0.click(
+                    vc_single,
+                    [
+                        spk_item,
+                        input_audio0,
+                        vc_transform0,
+                        f0_file,
+                        f0method0,
+                        file_index1,
+                        # file_index2,
+                        # file_big_npy1,
+                        index_rate1,
+                        filter_radius0,
+                        resample_sr0,
+                        rms_mix_rate0,
+                        protect0,
+                        crepe_hop_length
+                    ],
+                    [vc_output1, vc_output2],
+                )
                         
         with gr.TabItem("Download Model"):
             with gr.Row():
