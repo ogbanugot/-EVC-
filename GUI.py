@@ -1936,7 +1936,7 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
                 """
                 )
                 
-        with gr.TabItem("Train", visible=False):
+        with gr.TabItem("Train"):
             with gr.Row():
                 with gr.Column():
                     exp_dir1 = gr.Textbox(label="Voice Name:", value="My-Voice")
